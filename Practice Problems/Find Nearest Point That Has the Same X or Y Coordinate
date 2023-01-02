@@ -1,0 +1,23 @@
+class Solution:
+    def nearestValidPoint(self, x: int, y: int, points: List[List[int]]) -> int:
+        idx = 0
+        stack = []
+        for numx , numy in points:
+
+            if numx == x or numy == y:
+                dis = abs(numx - x) + abs(numy - y)
+                stack.append([dis,idx])
+            idx += 1
+        if stack:
+            res = min(stack)
+            return res[1]
+        else:
+            return -1
+
+
+
+
+
+
+
+        
