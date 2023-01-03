@@ -1,0 +1,49 @@
+class Solution:
+    def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
+
+        dic_winner = {}
+        dic_loser = {}
+
+        for i in range(len(matches)):
+            if matches[i][0] in dic_winner:
+                dic_winner[matches[i][0]] += 1
+            else:
+                dic_winner[matches[i][0]] = 1
+            if matches[i][1] in dic_loser:
+                dic_loser[matches[i][1]] += 1
+            else:
+                dic_loser[matches[i][1]] = 1
+        
+        res=[]
+        
+        stack1 = []
+        for val1,fre1 in dic_winner.items():
+           
+            if val1 in dic_loser.keys():
+                continue
+            else:
+                stack1.append(val1)
+        res.append(sorted(stack1))
+
+        
+
+        stack2 = []
+        for val,fre in dic_loser.items():
+            if fre == 1:
+                stack2.append(val)
+        res.append(sorted(stack2))
+        
+        return res
+
+
+
+
+
+
+                
+
+
+
+        
+        
+
